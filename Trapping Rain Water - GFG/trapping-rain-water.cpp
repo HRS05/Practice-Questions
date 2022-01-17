@@ -11,6 +11,9 @@ class Solution{
     public:
     long long trappingWater(int arr[], int n){
         
+        
+        //opti. solution 
+        // Time : O(n) Space : O(1)
         long long water,l,r,leftMax,rightMax;
         water=0;
         leftMax=0;
