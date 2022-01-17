@@ -11,7 +11,34 @@ class Solution{
     public:
     long long trappingWater(int arr[], int n){
         
+        long long water,l,r,leftMax,rightMax;
+        water=0;
+        leftMax=0;
+        rightMax=0;
+        l=0;
+        r=n-1;
         
+        while(l<r)
+        {
+            if(arr[l]<=arr[r])
+            {
+                if(arr[l]>leftMax) leftMax=arr[l];
+                else water+=leftMax-arr[l];
+                l++;
+            }
+            else
+            {
+                if(arr[r]>rightMax) rightMax=arr[r];
+                else water+=rightMax-arr[r];
+                r--;
+            }
+        }
+        return water;
+        
+        
+        /*
+        // concept of prefix max array and suffix max
+        // Time : O(n)  Space : O(n)
         long long water=0;
         long long max=0;
         vector<int> preSum(n);
@@ -34,10 +61,11 @@ class Solution{
         }
         
         return water;
-        
+        */
         
         /*
            // this is brut force app.
+           // Time : O(n^2)  Space : O(1)
            
         long long water=0;
         for(int i=1;i<n-1;i++)
