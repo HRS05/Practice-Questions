@@ -8,8 +8,6 @@ public:
             ans.push_back(v);
             return;
         }
-        if(target<0) return;
-        
         for(int i=index;i<candidates.size();i++)
         {
             if(i>index && candidates[i]==candidates[i-1]) continue;
