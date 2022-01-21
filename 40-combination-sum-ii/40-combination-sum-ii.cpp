@@ -1,6 +1,7 @@
 class Solution {
 public:
-    
+    // T : O(2^n * k)  (k= average length of subsequences)
+    // S : k * x  (x=number of combinations)
     void check(vector<vector<int>> &ans,vector<int>& candidates,vector<int> &v,int target,int index)
     {
         if(target==0)
