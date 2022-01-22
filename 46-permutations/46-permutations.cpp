@@ -1,7 +1,8 @@
 class Solution {
 public:
     
-    
+    //T : O(n! * n)
+    //S : no extra space
     void check(vector<vector<int> > &ans,vector<int> nums,int index)
     {
         if(index>=nums.size())
