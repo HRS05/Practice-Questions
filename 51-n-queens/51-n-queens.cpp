@@ -3,40 +3,26 @@ public:
     
     bool isSafe(int row,int column,vector<string> board)
     {
-        for(int i=0;i<board.size();i++)
+        for(int i=column-1;i>=0;i--)
         {
-            if(board[i][column]=='Q' && i!=row) return false;
             if(board[row][i]=='Q' && i!=column) return false;
         }
         int i,j;
         i=row; j=column;
-        i=i-1; j=j+1;
-        while(i>=0 && i<board.size() && j>=0 && j<board.size())
-        {
-            if(board[i][j]=='Q') return false;
-            i=i-1; j=j+1;
-        }
-        i=row; j=column;
         i=i+1; j=j-1;
-        while(i>=0 && i<board.size() && j>=0 && j<board.size())
+        while(i<board.size() && j>=0)
         {
             if(board[i][j]=='Q') return false;
             i=i+1; j=j-1;
         }
         i=row; j=column;
-        i=i+1; j=j+1;
-        while(i>=0 && i<board.size() && j>=0 && j<board.size())
-        {
-            if(board[i][j]=='Q') return false;
-            i=i+1; j=j+1;
-        }
-        i=row; j=column;
         i=i-1; j=j-1;
-        while(i>=0 && i<board.size() && j>=0 && j<board.size())
+        while(i>=0 && j>=0)
         {
             if(board[i][j]=='Q') return false;
             i=i-1; j=j-1;
         }
+        
         return true;
     }
         
