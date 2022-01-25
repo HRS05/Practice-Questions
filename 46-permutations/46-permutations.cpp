@@ -3,6 +3,39 @@ public:
     
     //T : O(n! * n)
     //S : no extra space
+    
+    void check(vector<vector<int> > &ans,vector<int> &nums,int index)
+    {
+        if(index>=nums.size())
+        {
+            ans.push_back(nums);
+            return;
+        }
+        for(int i=index;i<nums.size();i++)
+        {
+            int g=nums[index];
+            nums[index]=nums[i];
+            nums[i]=g;
+            check(ans,nums,index+1);
+            g=nums[index];
+            nums[index]=nums[i];
+            nums[i]=g;
+        }
+    }
+    
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int> > ans;
+        vector<int> v;
+        check(ans,nums,0);
+        return ans;
+    }
+    
+    
+    /*
+    //---------------------------IMP-----------------------
+    //T : O(n! * n)
+    //S : no extra space
+    // when we pass pass nums array without reference
     void check(vector<vector<int> > &ans,vector<int> nums,int index)
     {
         if(index>=nums.size())
@@ -25,7 +58,7 @@ public:
         check(ans,nums,0);
         return ans;
     }
-    
+    */
     
     /*
     //T : O(n! * n)
