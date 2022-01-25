@@ -22,10 +22,6 @@ public:
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int> > ans;
         vector<int> v;
-        map<int,bool> mp;
-        for(int it : nums){
-            mp[it]=false;
-        }
         check(ans,nums,0);
         return ans;
     }
