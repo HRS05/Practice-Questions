@@ -1,5 +1,8 @@
 class Solution {
 public:
+    
+    // T : O(n^2)
+     
     string getPermutation(int n, int k) {
         int fact=1;
         vector<int> numbers;
