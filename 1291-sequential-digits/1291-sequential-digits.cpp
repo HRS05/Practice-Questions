@@ -1,10 +1,6 @@
 class Solution {
 public:
     
-    // space and time is not too much both are constant so,
-    // T : O(1)
-    // S : O(1)
-    
     void solve(vector<int> &ans,int low,int high,int num,int index)
     {
         if(num>=low && num<=high)
