@@ -3,7 +3,7 @@ public:
     int minEatingSpeed(vector<int>& piles, int h) {
         
         
-        // using nimary search method
+        // using binary search method
         int left=1;
         int right=*max_element(piles.begin(),piles.end());
         
