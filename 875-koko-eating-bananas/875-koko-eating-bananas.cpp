@@ -4,6 +4,7 @@ public:
         
         
         // using binary search method
+        // T : O(n⋅logm)
         int left=1;
         int right=*max_element(piles.begin(),piles.end());
         
