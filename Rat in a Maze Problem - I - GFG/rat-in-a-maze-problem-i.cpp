@@ -16,7 +16,11 @@ class Solution{
         if(i>n-1 || i<0 || j>n-1 || j<0) return;
         if(m[i][j]!=1) return;
         //if(visited[i][j]==true) return;
-        
+        /*
+        if we dont't want to use extra space for visited
+        so, we can just change the value from 1 to 0 for that 
+        recursive call see below
+        */
         
         if(i==n-1 && j==n-1) 
         {
