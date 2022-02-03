@@ -15,7 +15,8 @@ class Solution{
     {
         if(i>n-1 || i<0 || j>n-1 || j<0) return;
         if(m[i][j]!=1) return;
-        if(visited[i][j]==true) return;
+        //if(visited[i][j]==true) return;
+        
         
         if(i==n-1 && j==n-1) 
         {
@@ -23,12 +24,14 @@ class Solution{
             //cout<<path<<endl;
             return;
         }
-        visited[i][j]=true;
+        //visited[i][j]=true;
+        m[i][j]=0;
         solve(ans,m,visited,i,j+1,path+"R",n);        
         solve(ans,m,visited,i,j-1,path+"L",n);        
         solve(ans,m,visited,i+1,j,path+"D",n);        
         solve(ans,m,visited,i-1,j,path+"U",n);        
-        visited[i][j]=false;
+        m[i][j]=1;
+        //visited[i][j]=1;
     }
     
     vector<string> findPath(vector<vector<int>> &m, int n) {
