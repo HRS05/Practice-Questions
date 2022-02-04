@@ -15,7 +15,7 @@ public:
         else
         {
         if(openCount<n) solve(ans,n,closeCount,openCount+1,s+"(");    
-        if(closeCount<n && closeCount<openCount) solve(ans,n,closeCount+1,openCount,s+")");    
+        if(closeCount<openCount) solve(ans,n,closeCount+1,openCount,s+")");    
         }
     }
     
