@@ -8,15 +8,11 @@ public:
             return;
         }
         if(index==n+1) return;
-        //for(int i=index;i<=n;i++)
-        {
-            
+                
                 v.push_back(index);
                 solve(ans,v,vis,n,k,index+1);
                 v.pop_back();
                 solve(ans,v,vis,n,k,index+1);
-            
-        }
     }
     
     vector<vector<int> > combine(int n, int k)
