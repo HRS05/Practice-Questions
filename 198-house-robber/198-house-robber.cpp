@@ -1,7 +1,31 @@
 class Solution {
 public:
     
+    //space optimized code
+    int rob(vector<int>& nums) {
+        int n=nums.size();
+        
+        int ans=nums[0];
+        int i2;
+        int i1;
+        i1=ans;
+        i2=ans;
+        for(int i=1;i<n;i++)
+        {
+            int take;
+            if(i-2 >= 0)take=nums[i]+i2;
+            else take=nums[i];
+            int notTake=i1;
+            ans=max(take,notTake);
+            i2=i1;
+            i1=ans;
+            
+        }
+        return ans;
+    }
     
+    
+    /*
     //tabulation code
     int rob(vector<int>& nums) {
         int n=nums.size();
@@ -17,7 +41,7 @@ public:
         }
         return dp[n-1];
     }
-    
+    */
     
     /*
     // memoization code
