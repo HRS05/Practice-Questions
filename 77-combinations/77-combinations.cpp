@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    void solve(vector<vector<int> > &ans,vector<int> &v,vector<bool> &vis,int n,int k,int index)
+    void solve(vector<vector<int> > &ans,vector<int> &v,int n,int k,int index)
     {
         if(k==v.size()){
             ans.push_back(v);
@@ -10,17 +10,16 @@ public:
         if(index==n+1) return;
                 
                 v.push_back(index);
-                solve(ans,v,vis,n,k,index+1);
+                solve(ans,v,n,k,index+1);
                 v.pop_back();
-                solve(ans,v,vis,n,k,index+1);
+                solve(ans,v,n,k,index+1);
     }
     
     vector<vector<int> > combine(int n, int k)
     {
         vector<vector<int> > ans;
         vector<int> v;
-        vector<bool> vis(n+1,false);
-        solve(ans,v,vis,n,k,1);
+        solve(ans,v,n,k,1);
         
         return ans;
     }
