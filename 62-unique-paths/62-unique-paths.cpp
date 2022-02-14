@@ -1,19 +1,29 @@
 class Solution {
 public:
     
-    int uni(int m,int n,vector<vector<int> > &dp)
-    {
-       
-        if(m<=0 || n<=0) return 0;
-        if(n==1 && m==1) return 1;
-        if(dp[m][n]!=-1) return dp[m][n];
-        int right,down;
-        right=uni(m-1,n,dp);
-        down=uni(m,n-1,dp);
-        return dp[m][n]=right+down;
+    //space optimization
+    int uniquePaths(int m, int n) {
+        vector<int> prev(n+1,0);
+        for(int i=1;i<=m;i++)
+        {
+            vector<int> tmp(n+1,0);
+            for(int j=1;j<=n;j++)
+            {
+                if(i==1 && j==1) tmp[j]=1;
+                else
+                {
+                    tmp[j]=tmp[j-1]+prev[j];
+                }
+            }
+            prev=tmp;
+        }
+        return prev[n];
     }
     
     
+    
+    /*
+    //tabulation code
     int uniquePaths(int m, int n) {
          vector<vector<int> > dp(m+1,vector<int>(n+1,0));
         for(int i=1;i<=m;i++)
@@ -29,7 +39,7 @@ public:
         }
         return dp[m][n];
     }
-    
+    */
     
     
     /*
