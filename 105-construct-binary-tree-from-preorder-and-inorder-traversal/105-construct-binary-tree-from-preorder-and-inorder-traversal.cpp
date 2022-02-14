@@ -13,15 +13,15 @@ class Solution {
 public:
     
     
-    TreeNode* construct(vector<int> &preorder,int pi,int pj,vector<int> &inorder,int ii,int ij,map<int,int> &mp)
+    TreeNode* construct(vector<int> &preorder,int preStart,int preEnd,vector<int> &inorder,int inStart,int inEnd,map<int,int> &mp)
     {
-        if(pi>pj || ii>ij) return NULL;
+        if(preStart>preEnd || inStart>inEnd) return NULL;
         
-        TreeNode *root=new TreeNode(preorder[pi]);
-        int index=mp[preorder[pi]];
-        int x=index-ii;
-        root->left=construct(preorder,pi+1,pi+x,inorder,ii,index-1,mp);
-        root->right=construct(preorder,pi+x+1,pj,inorder,index+1,ij,mp);
+        TreeNode *root=new TreeNode(preorder[preStart]);
+        int index=mp[preorder[preStart]];
+        int factor=index-inStart;
+        root->left=construct(preorder,preStart+1,preStart+factor,inorder,inStart,index-1,mp);
+        root->right=construct(preorder,preStart+factor+1,preEnd,inorder,index+1,inEnd,mp);
         return root;
     }
     
