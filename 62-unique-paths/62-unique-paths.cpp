@@ -64,4 +64,17 @@ public:
         return uni(m,n,dp);
     }
     */
+    
+    /*
+    //recursive code
+    int uniquePaths(int m, int n) {
+        if(m<=0 || n<=0) return 0;
+        if(n==1 && m==1) return 1;
+        int right,down;
+        right=uniquePaths(m-1,n);
+        down=uniquePaths(m,n-1);
+        return right+down;
+    }
+    */
+    
 };
