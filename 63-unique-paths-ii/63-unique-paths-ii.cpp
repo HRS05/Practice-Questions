@@ -1,8 +1,34 @@
 class Solution {
 public:
+    //space optimization
+    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+        int m=obstacleGrid.size();
+        int n=obstacleGrid[0].size();
+        
+        vector<int> prev(n,0);
+        for(int i=0;i<m;i++)
+        {
+            vector<int> tmp(n,0);
+            for(int j=0;j<n;j++)
+            {
+                if(obstacleGrid[i][j]==1) 
+                {    
+                    tmp[j]=0;
+                    continue;
+                }
+                if(i==0 && j==0) tmp[j]=1;
+                else
+                {
+                    tmp[j]=(j>0 ? tmp[j-1] : 0)+prev[j];
+                }
+            }
+            prev=tmp;
+        }
+        return prev[n-1];
+    }
     
+    /*
     //tabulation code
-   
     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
         int m=obstacleGrid.size();
         int n=obstacleGrid[0].size();
@@ -25,6 +51,7 @@ public:
         }
         return dp[m-1][n-1];
     }
+    */
     
     //memoized code
     /*
