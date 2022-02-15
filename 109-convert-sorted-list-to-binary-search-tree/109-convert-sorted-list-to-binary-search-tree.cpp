@@ -21,7 +21,7 @@
  */
 class Solution {
 public:
-    ListNode* middleNode(ListNode *head)
+    ListNode* prevToMiddleNode(ListNode *head)
     {
         ListNode *slow=head;
         ListNode *fast=head->next;
@@ -40,7 +40,7 @@ public:
             TreeNode *root=new TreeNode(head->val);
             return root;
         }
-        ListNode *prev=middleNode(head);
+        ListNode *prev=prevToMiddleNode(head);
         ListNode *middle=prev->next;
         TreeNode *root=new TreeNode(middle->val);
         
