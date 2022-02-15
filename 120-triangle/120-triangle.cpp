@@ -1,7 +1,32 @@
 class Solution {
 public:
     
+    //space optimization
+    int minimumTotal(vector<vector<int>>& triangle) {
+        int n=triangle.size();
+        vector<int > prev(n,0);
+        for(int i=0;i<n;i++)
+        {
+            prev[i]=triangle[n-1][i];    
+        }
+        for(int i=n-2;i>=0;i--)
+        {
+            vector<int> tmp(n);
+            for(int j=0;j<i+1;j++)
+            {
+                int i1=prev[j]+triangle[i][j];
+                int i2=prev[j+1]+triangle[i][j];
+                tmp[j]=min(i1,i2);
+            }
+            prev=tmp;
+        }
+        
+        return prev[0];
+    }
     
+    
+    /*
+    //tabulation code
     int minimumTotal(vector<vector<int>>& triangle) {
         int n=triangle.size();
         vector<vector<int > > dp(n,vector<int>(n,0));
@@ -21,6 +46,7 @@ public:
         
         return dp[0][0];
     }
+    */
     
     /*
     //memoized code
