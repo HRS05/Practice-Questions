@@ -18,7 +18,7 @@ public:
         TreeNode *root=new TreeNode(postorder[*postIndex]);
         int index=mp[postorder[*postIndex]];
         *postIndex=*postIndex-1;
-        
+        //first call for right and than for left
         root->right=construct(postorder,mp,index+1,end,postIndex);
         root->left=construct(postorder,mp,start,index-1,postIndex);
         return root;
