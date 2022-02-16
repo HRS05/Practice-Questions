@@ -1,7 +1,8 @@
 class Solution {
 public:
     //space optimization
-    
+    //TC : O(m*n) 
+    //SC : O(n)
     int minFallingPathSum(vector<vector<int>>& matrix) {
         int i,j;
         vector<int> prev(matrix[0].size(),0);
@@ -31,6 +32,8 @@ public:
     
     /*
     //tabulation code
+    //TC : O(m*N) 
+    //SC : O(m*n)
     int minFallingPathSum(vector<vector<int>>& matrix) {
         int i,j;
         vector<vector<int> > dp(matrix.size(),(vector<int>(matrix[0].size(),0)));
