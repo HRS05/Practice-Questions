@@ -14,7 +14,7 @@ public:
         
         for(int i=1;i<matrix.size();i++)
         {
-            vector<int> tmp(matrix[0].size(),0);
+            vector<int> curr(matrix[0].size(),0);
             for(int j=0;j<matrix[0].size();j++)
             {
                 int i1,i2,i3;
@@ -22,9 +22,9 @@ public:
                 i1=matrix[i][j]+prev[j];
                 if(j > 0) i2=matrix[i][j]+prev[j-1];
                 if(j < matrix[0].size()-1) i3=matrix[i][j]+prev[j+1];
-                tmp[j]=min(i1,min(i2,i3));
+                curr[j]=min(i1,min(i2,i3));
             }
-            prev=tmp;
+            prev=curr;
         }
         
         return *min_element(prev.begin(),prev.end());
