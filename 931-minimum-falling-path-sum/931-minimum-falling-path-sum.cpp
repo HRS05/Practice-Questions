@@ -1,6 +1,35 @@
 class Solution {
 public:
+    //space optimization
     
+    int minFallingPathSum(vector<vector<int>>& matrix) {
+        int i,j;
+        vector<int> prev(matrix[0].size(),0);
+            
+        for(int k=0;k<matrix[0].size();k++)
+        {
+            prev[k]=matrix[0][k];
+        }
+        
+        for(int i=1;i<matrix.size();i++)
+        {
+            vector<int> tmp(matrix[0].size(),0);
+            for(int j=0;j<matrix[0].size();j++)
+            {
+                int i1,i2,i3;
+                i1=i2=i3=100000;
+                i1=matrix[i][j]+prev[j];
+                if(j > 0) i2=matrix[i][j]+prev[j-1];
+                if(j < matrix[0].size()-1) i3=matrix[i][j]+prev[j+1];
+                tmp[j]=min(i1,min(i2,i3));
+            }
+            prev=tmp;
+        }
+        
+        return *min_element(prev.begin(),prev.end());
+    }
+    
+    /*
     //tabulation code
     int minFallingPathSum(vector<vector<int>>& matrix) {
         int i,j;
@@ -26,7 +55,7 @@ public:
         
         return *min_element(dp[matrix.size()-1].begin(),dp[matrix.size()-1].end());
     }
-    
+    */
     
     /*
     //memoized code
