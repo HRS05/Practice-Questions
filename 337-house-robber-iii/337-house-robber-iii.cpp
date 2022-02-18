@@ -11,22 +11,29 @@
  */
 class Solution {
 public:
-    map<TreeNode *,int> mp;
-    int rob(TreeNode* root) {
+    
+    int getMaxCount(TreeNode* root,map<TreeNode *,int> &mp)
+    {
         if(root==NULL) return 0;
         if(mp.find(root)!=mp.end()) return mp.find(root)->second;
         int sum=0;
         sum=sum+root->val;
         if(root->left!=NULL)
         {
-            sum+=rob(root->left->left);
-            sum+=rob(root->left->right);
+            sum+=getMaxCount(root->left->left,mp);
+            sum+=getMaxCount(root->left->right,mp);
         }
         if(root->right!=NULL)
         {
-            sum+=rob(root->right->left);
-            sum+=rob(root->right->right);
+            sum+=getMaxCount(root->right->left,mp);
+            sum+=getMaxCount(root->right->right,mp);
         }
-        return mp[root]=max(sum,(rob(root->left)+rob(root->right)));
+        return mp[root]=max(sum,(getMaxCount(root->left,mp)+getMaxCount(root->right,mp)));
+    }
+    
+    
+    int rob(TreeNode* root) {
+        map<TreeNode *,int> mp;
+        return getMaxCount(root,mp);
     }
 };
