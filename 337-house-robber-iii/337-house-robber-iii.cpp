@@ -12,6 +12,29 @@
 class Solution {
 public:
     
+    int robbing(TreeNode *root,int &robMax,int &notRobMax)
+    {
+        if(root==0) return 0;
+        int leftRobMax=0,leftNotRobMax=0;
+        int rightRobMax=0,rightNotRobMax=0;
+        int leftMax=robbing(root->left,leftRobMax,leftNotRobMax);
+        int rightMax=robbing(root->right,rightRobMax,rightNotRobMax);
+        robMax=root->val+leftNotRobMax+rightNotRobMax;
+        notRobMax=leftMax+rightMax;
+        
+        return max(robMax,notRobMax);
+        
+    }
+    
+    
+    int rob(TreeNode* root) {
+        int robMax=0;
+        int notRobMax=0;
+        return robbing(root,robMax,notRobMax);
+    }
+    
+    
+    /*
     int getMaxCount(TreeNode* root,map<TreeNode *,int> &mp)
     {
         if(root==NULL) return 0;
@@ -36,4 +59,5 @@ public:
         map<TreeNode *,int> mp;
         return getMaxCount(root,mp);
     }
+    */
 };
