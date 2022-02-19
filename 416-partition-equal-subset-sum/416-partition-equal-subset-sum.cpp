@@ -5,6 +5,7 @@ public:
     //memoized code
     bool checkTarget(vector<int> &nums,int index,int target,vector<vector<int> > &dp)
     {
+        if(target==0) return true;
         if(index<0 || target<0) return false;
         if(index==0) return (nums[0]==target);
         if(dp[index][target]!=-1) return dp[index][target];
