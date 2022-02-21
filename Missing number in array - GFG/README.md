@@ -1,5 +1,5 @@
 # Missing number in array
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given an array of size&nbsp;<strong>N-1</strong>&nbsp;such that it only contains distinct integers in the range of&nbsp;<strong>1&nbsp;to N</strong>. Find the missing element.</span></p>
 
