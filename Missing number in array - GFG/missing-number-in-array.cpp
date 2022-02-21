@@ -14,14 +14,12 @@ class Solution{
   public:
     int MissingNumber(vector<int>& array, int n) {
         vector<bool> v(n+1,false);
+        int sum=(n*(n+1))/2;
         for(int i=0;i<array.size();i++)
         {
-            v[array[i]]=true;
+            sum=sum-array[i];
         }
-        for(int i=1;i<v.size();i++)
-        {
-            if(!v[i]) return i;
-        }
+        return sum;
     }
 };
 
