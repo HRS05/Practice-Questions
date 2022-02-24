@@ -1,13 +1,41 @@
 class Solution {
 public:
+    //space optimization
+    int coinChange(vector<int>& coins, int amount) {
+        int n=coins.size();
+        vector<int> prev(amount+1,0);
+        for(int i=0;i<=amount;i++) 
+        {
+            if(i % coins[0]==0) prev[i]=i/coins[0]; //imp
+            else prev[i]=1e8;    
+        }
+        for(int i=1;i<n;i++)
+        {
+            vector<int> curr(amount+1,0);
+            for(int tar=0;tar<=amount;tar++)
+            {
+                int notTake=0+prev[tar];
+                int take=1e8;
+                if(coins[i]<=tar)
+                {
+                    take=1+curr[tar-coins[i]];
+                }
+                curr[tar]=min(take,notTake);
+            }
+            prev=curr;
+        }
+        
+        return prev[amount] > amount ? -1 : prev[amount];
+    }
     
+    /*
     //tabulation code
     int coinChange(vector<int>& coins, int amount) {
         int n=coins.size();
         vector<vector<int> > dp(coins.size(),vector<int>(amount+1,0));
         for(int i=0;i<=amount;i++) 
         {
-            if(i % coins[0]==0) dp[0][i]=i/coins[0];
+            if(i % coins[0]==0) dp[0][i]=i/coins[0]; //imp
             else dp[0][i]=1e8;    
         }
         for(int i=1;i<n;i++)
@@ -26,6 +54,7 @@ public:
         
         return dp[n-1][amount] > amount ? -1 : dp[n-1][amount];
     }
+    */
     
     /*
     //memoized code
