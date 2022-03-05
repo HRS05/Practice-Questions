@@ -11,11 +11,12 @@ public:
             sum+=nums[i];
             i--;
         }
+        int x=i;
         while(i>=0 && nums[i]==nums[index]-1)
         {
             i--;
         }
-        return dp[index]=max((sum+f(nums,i,dp)),f(nums,index-1,dp));
+        return dp[index]=max((sum+f(nums,i,dp)),f(nums,x,dp));
     }
     
     int deleteAndEarn(vector<int>& nums) {
