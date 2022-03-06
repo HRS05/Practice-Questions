@@ -1,7 +1,38 @@
 class Solution {
 public:
     
+    //recursive+memoized solution
+    long long mode=1e9+7;
     
+    long long f(int ps,int ds,vector<vector<int> > &dp)
+    {
+        if(ps==0 && ds==0)
+        {
+            return 1;
+        }
+        if(ps<0 || ds<0 || ds<ps)
+        {
+            return 0;
+        }
+        if(dp[ps][ds]!=-1) return dp[ps][ds];
+        long long ans=0;
+        ans+=ps * f(ps-1,ds,dp);
+        ans%=mode;
+        ans+=(ds-ps) * f(ps,ds-1,dp);
+        ans%=mode;
+        
+        return dp[ps][ds]=(int) ans;
+    }
+    
+    
+    int countOrders(int n) {
+        vector<vector<int> > dp(n+1,vector<int>(n+1,-1));
+        return f(n,n,dp);
+    }
+    
+    
+    /*
+    //math solution
     int countOrders(int n) {
         
         long long mode=1e9+7;
@@ -15,9 +46,5 @@ public:
         }
         return (int)ans;
     }
+    */
 };
-
-/*
-//explanation
-https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/discuss/516951/C%2B%2BJavaPython-Simple-Math-Formula-with-Explanation-Clean-and-Concise
-*/
