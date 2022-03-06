@@ -1,9 +1,34 @@
 class Solution {
 public:
     
+    //tabulation code
+    long long mode=1e9+7;
+    int countOrders(int n) {
+        vector<vector<long> > dp(n+1,vector<long>(n+1,0));
+        
+        for(int ps=0;ps<=n;ps++)
+        {
+            for(int ds=0;ds<=n;ds++)
+            {
+                if(ds==0 && ps==0) 
+                {
+                    dp[0][0]=1;
+                    continue;
+                }
+                if(ps>0) dp[ps][ds] += ps*dp[ps-1][ds];
+                dp[ps][ds]%=mode;
+                
+                if(ds>ps) dp[ps][ds] += (ds-ps) * dp[ps][ds-1];
+                dp[ps][ds]%=mode;
+            }
+        }
+        return dp[n][n];
+    }
+    
+    
+    /*
     //recursive+memoized solution
     long long mode=1e9+7;
-    
     long long f(int ps,int ds,vector<vector<int> > &dp)
     {
         if(ps==0 && ds==0)
@@ -29,7 +54,7 @@ public:
         vector<vector<int> > dp(n+1,vector<int>(n+1,-1));
         return f(n,n,dp);
     }
-    
+    */
     
     /*
     //math solution
