@@ -17,10 +17,12 @@ public:
                 if(sum<0)
                 {
                     b++;
+                    while(b < c && nums[b]==nums[b-1]) b++;
                 }
                 else if(sum>0)
                 {
                     c--;
+                    while(b < c && nums[c]==nums[c+1]) c--;
                 }
                 else
                 {
