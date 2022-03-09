@@ -10,6 +10,27 @@
  */
 class Solution {
 public:
+    
+    ListNode* deleteDuplicates(ListNode* head) {
+        if(head==NULL || head->next==NULL) return head;
+        ListNode *node=head->next;
+        if(head->val != node->val)
+        {
+            head->next=deleteDuplicates(node);
+            return head;
+        }
+        else
+        {
+            while(node && node->val==head->val) node=node->next;
+            return deleteDuplicates(node);
+        }
+        
+    }
+    
+    
+    
+    /*
+    //iterative solution
     ListNode* deleteDuplicates(ListNode* head) {
         if(head==NULL || head->next==NULL) return head;
         ListNode *ans=new ListNode(0);
@@ -32,5 +53,5 @@ public:
             }
         }
         return  newHead->next;
-    }
+    }*/
 };
