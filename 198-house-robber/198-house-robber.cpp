@@ -3,7 +3,7 @@ public:
     
     //space optimized code
     int rob(vector<int>& nums) {
-        int n=nums.size();
+        int n=nums.size();    
         
         int ans=nums[0];
         int i2;
