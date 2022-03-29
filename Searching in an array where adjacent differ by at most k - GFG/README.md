@@ -1,5 +1,5 @@
 # Searching in an array where adjacent differ by at most k
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">A step array is an array of integer where each element has a difference of at most k with its neighbor. Given a key x, we need to find the index value of x&nbsp;if multiple elements exist, return the first occurrence of the key. </span></p>
 
