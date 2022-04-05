@@ -1,6 +1,30 @@
 class Solution {
 public:
+        int largestRectangleArea(vector<int>& height) 
+        {
+           
+            int n=height.size();
+            int ans=0;
+            stack<int> st;
+            for(int i=0;i<=n;i++)
+            {
+                while(!st.empty() && ( i==n || height[st.top()]>=height[i]))
+                {
+                    int h=height[st.top()];
+                    st.pop();
+                    int w;
+                    if(st.empty()) w=i;
+                    else w=i-st.top()-1;
+                    ans=max(ans,(h*w));
+                }
+                st.push(i);
+            }
+            return ans;
+        }
     
+    
+    
+    /*
     int largestRectangleArea(vector<int>& height) {
         int n=height.size();
         vector<int> leftSmall(n,0);
@@ -37,7 +61,7 @@ public:
         }
         return ans;
     }
-    
+    */
     
     /*
     //brute force TLE solution
