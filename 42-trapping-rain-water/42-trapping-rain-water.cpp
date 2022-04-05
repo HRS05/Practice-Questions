@@ -2,6 +2,36 @@ class Solution {
 public:
     int trap(vector<int>& height) {
         int n=height.size();
+        int leftMax,rightMax;
+        int water=0;
+        leftMax=rightMax=water=0;
+        int l=0;
+        int r=n-1;
+        while(l<r)
+        {
+            if(height[l]<=height[r])
+            {
+                if(height[l]>leftMax) leftMax=height[l];
+                else water+=leftMax-height[l];
+                l++;
+            }
+            else
+            {
+                if(height[r]>rightMax) rightMax=height[r];
+                else water+=rightMax-height[r];
+                r--;
+            }
+        }   
+        return water;
+    }
+    
+    
+    
+    /*
+    //TC :O(n)
+    //SC :O(n)
+    int trap(vector<int>& height) {
+        int n=height.size();
         long long water=0;
         long long max=0;
         vector<int> preSum(n);
@@ -25,4 +55,5 @@ public:
         
         return (int)water;
     }
+    */
 };
