@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //TC : O(n)
+    //SC : O(1)
     int trap(vector<int>& height) {
         int n=height.size();
         int leftMax,rightMax;
