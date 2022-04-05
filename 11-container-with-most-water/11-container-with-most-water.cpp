@@ -1,6 +1,21 @@
 class Solution {
 public:
     
+    /*
+    further we can write while loop with more
+        optimization
+    while(l<r)
+    {
+        int h = min(height[l], height[r]);
+        ans = max(water, (r - l) * h);
+        while (height[l] <= h && l < r) l++;
+        while (height[r] <= h && l < r) r--;
+    }
+    
+    */
+    
+    // TC : O(n)
+    // SC : O(1)
     int maxArea(vector<int>& height) {
         int n=height.size();
         int ans=0;
