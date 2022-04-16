@@ -16,8 +16,7 @@ public:
     {
         if(root==NULL) return;
         f(root->right,sum);
-        if(root->right==NULL) sum+=root->val;
-        else sum += root->val;
+        sum += root->val;
         root->val=sum;
         f(root->left,sum);
         
