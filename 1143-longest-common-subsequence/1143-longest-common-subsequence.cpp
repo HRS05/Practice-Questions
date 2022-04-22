@@ -1,6 +1,34 @@
 class Solution {
 public:
     
+    //space optimization
+    int longestCommonSubsequence(string text1, string text2) {
+        int n=text1.size();
+        int m=text2.size();
+        vector<int> prev(m+1,0);
+        
+        for(int i=0;i<=m;i++) prev[i]=0;
+        
+        
+        for(int i=1;i<=n;i++)
+        {
+            vector<int> curr(m+1,0);
+            for(int j=1;j<=m;j++)
+            {
+                if(text1[i-1]==text2[j-1]){
+                    curr[j]=prev[j-1]+1;
+                }
+                else {
+                    curr[j]=max(prev[j],curr[j-1]);
+                }
+            }
+            prev=curr;
+        }
+        return prev[m];
+    }
+    
+    
+    /*
     //tabulation solution
     int longestCommonSubsequence(string text1, string text2) {
         int n=text1.size();
@@ -15,8 +43,6 @@ public:
         {
             for(int j=1;j<=m;j++)
             {
-                int i1,i2;
-                i1=i2=0;
                 if(text1[i-1]==text2[j-1]){
                     dp[i][j]=dp[i-1][j-1]+1;
                 }
@@ -28,7 +54,7 @@ public:
         }
         return dp[n][m];
     }
-    
+    */
     
     /*
     //recursive and memoized solution
