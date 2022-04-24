@@ -1,6 +1,61 @@
 class Solution {
 public:
+    //1 D Array space optimization
+    //TC : O(n*m)
+    //SC : O(m)
+    int numDistinct(string s, string t) {
+        int n=s.size();
+        int m=t.size();
+        
+        vector<double> curr(m+1,0);
+        
+        curr[0]=1;
+        
+        for(int i=1;i<=n;i++)
+        {
+            for(int j=m;j>=1;j--)
+            {
+                long long count=0;
+                if(s[i-1]==t[j-1]) curr[j]=curr[j-1]+curr[j];//count+=curr[j-1];
+                //curr[j]=count+curr[j];
+            }
+        }
+        
+        return (int)curr[m];
+    }
     
+    /*
+    //TC : O(n*m)
+    //SC : O(m)
+    int numDistinct(string s, string t) {
+        int n=s.size();
+        int m=t.size();
+        
+        vector<int> prev(m+1,0),curr(m+1,0);
+        
+        prev[0]=1;
+        
+        for(int i=1;i<=n;i++)
+        {
+            for(int j=1;j<=m;j++)
+            {
+                long long count=0;
+                if(s[i-1]==t[j-1]) count+=prev[j-1];
+                count=count+prev[j];
+                curr[j]=count;
+            }
+            prev=curr;
+        }
+        
+        return prev[m];
+    }
+    */
+    
+    
+    /*
+    //tabulation code
+    //TC : O(n*m)
+    //SC : O(n*m)
     int numDistinct(string s, string t) {
         int n=s.size();
         int m=t.size();
@@ -21,19 +76,10 @@ public:
                 dp[i][j]=count;
             }
         }
-        /*
-        for(int i=0;i<=n;i++)
-        {
-            for(int j=0;j<=m;j++)
-            {
-                cout<<dp[i][j]<<" ";
-            }
-            cout<<endl;
-        }  
-        */
+        
         return dp[n][m];
     }
-    
+    */
     
     
 /*
