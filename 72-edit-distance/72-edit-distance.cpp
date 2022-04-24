@@ -1,5 +1,44 @@
 class Solution {
 public:
+    
+    
+    //space optimization
+    int minDistance(string s1, string s2) {
+        int n=s1.size();
+        int m=s2.size();
+        vector<int> curr(m+1,0),prev(m+1,0);
+        if(n==0 && m==0) return 0;
+        
+        for(int i=1;i<=m;i++) prev[i]=i;        
+        prev[0]=0;
+        
+        for(int i=1;i<=n;i++)
+        {
+            curr[0]=i;
+            for(int j=1;j<=m;j++)
+            {
+                int i1,i2,i3;
+                i1=i2=i3=INT_MAX;
+                if(s1[i-1]==s2[j-1])
+                {
+                    curr[j]=prev[j-1];
+                    continue;
+                }
+                i1=1+prev[j-1];
+                i2=1+prev[j];
+                i3=1+curr[j-1];
+                curr[j]=min({i1,i2,i3});
+            }
+            prev=curr;
+        }
+        return prev[m];
+    }
+    
+    
+    /*
+    //tabulation 
+    //TC : O(n*m)
+    //SC : O(n*m)
     int minDistance(string s1, string s2) {
         int n=s1.size();
         int m=s2.size();
@@ -27,7 +66,7 @@ public:
             }
         }
         return dp[n][m];
-    }
+    }*/
     
     
     /*
