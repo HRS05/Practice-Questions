@@ -1,8 +1,37 @@
 class Solution {
 public:
+    int minDistance(string s1, string s2) {
+        int n=s1.size();
+        int m=s2.size();
+        vector<vector<int> > dp(n+1,vector<int>(m+1,0));
+        if(n==0 && m==0) return 0;
+        
+        for(int i=1;i<=n;i++) dp[i][0]=i;
+        for(int i=1;i<=m;i++) dp[0][i]=i;        
+        
+        for(int i=1;i<=n;i++)
+        {
+            for(int j=1;j<=m;j++)
+            {
+                int i1,i2,i3;
+                i1=i2=i3=INT_MAX;
+                if(s1[i-1]==s2[j-1])
+                {
+                    dp[i][j]=dp[i-1][j-1];
+                    continue;
+                }
+                i1=1+dp[i-1][j-1];
+                i2=1+dp[i-1][j];
+                i3=1+dp[i][j-1];
+                dp[i][j]=min({i1,i2,i3});
+            }
+        }
+        return dp[n][m];
+    }
     
     
-    
+    /*
+    //recursive / memoized solution
     int f(string s1,int n,string s2,int m,vector<vector<int> > &dp)
     {
         if(m==0) return n;
@@ -24,5 +53,5 @@ public:
         vector<vector<int> > dp(n+1,vector<int>(m+1,-1));
         if(n==0 && m==0) return 0;
         return f(word1,n,word2,m,dp);
-    }
+    }*/
 };
