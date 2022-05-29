@@ -12,7 +12,7 @@ public:
         long long int ans=0;
         for(int i=0;i<words.size();i++)
         {
-            long long int count=0;
+            long long int count;
             for(int j=i+1;j<words.size();j++)
             {
                 bool check=true;
