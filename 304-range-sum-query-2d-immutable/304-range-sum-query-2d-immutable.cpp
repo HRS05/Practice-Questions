@@ -15,30 +15,11 @@ public:
                 else dp[i][j]=dp[i][j-1]+matrix[i][j];
             }
         }
-        
-        for(int i=0;i<matrix.size();i++)
-        {
-            for(int j=0;j<matrix[0].size();j++)
-            {
-                cout<<dp[i][j]<<"  ";
-            }
-            cout<<endl;
-        }
         this->matrix=dp;
     }
     
     int sumRegion(int row1, int col1, int row2, int col2) {
         int ans=0;
-        if(row1==row2 && col1==col2) {
-            if(col1==0)
-            {
-                return this->matrix[row1][col1];
-            }
-            else
-            {
-                return this->matrix[row2][col2]-this->matrix[row2][col2-1];
-            }
-        }
         
         for(int i=row1;i<=row2;i++)
         {
