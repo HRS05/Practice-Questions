@@ -11,16 +11,16 @@
  */
 class Solution {
 public:
-    int ans{0};
-    int helper(TreeNode *root,int val){
+    int helper(TreeNode *root,int val,int &ans){
         if(root==NULL) return 0;
-        int lh=helper(root->left,root->val);
-        int rh=helper(root->right,root->val);
+        int lh=helper(root->left,root->val,ans);
+        int rh=helper(root->right,root->val,ans);
         ans=max(ans,(lh+rh));
         return val==root->val ? 1+max(lh,rh) : 0;
     }
     int longestUnivaluePath(TreeNode* root) {
-        helper(root,-10001);
+        int ans{0};
+        helper(root,-10001,ans);
         return ans;
     }
     
