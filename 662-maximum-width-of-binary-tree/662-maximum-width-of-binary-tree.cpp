@@ -19,17 +19,17 @@ public:
         while(!q.empty())
         {
             unsigned long long size=q.size();
-            unsigned long long index_level=q.front().second;
-            unsigned long long index=q.front().second;
+            unsigned long long first_non_null_number_at_level=q.front().second;
+            unsigned long long last_non_null_number_at_level=q.front().second;
             for(unsigned long long i=0;i<size;i++)
             {
                 TreeNode *node=q.front().first;
-                index=q.front().second;
+                last_non_null_number_at_level=q.front().second;
                 q.pop();
-                if(node->left) q.push({node->left,2*index});
-                if(node->right) q.push({node->right,2*index+1});
+                if(node->left) q.push({node->left,2*last_non_null_number_at_level});
+                if(node->right) q.push({node->right,2*last_non_null_number_at_level+1});
             } 
-            ans=max(ans,(index-index_level));
+            ans=max(ans,(last_non_null_number_at_level-first_non_null_number_at_level));
         }
         return ans+1;
     }
