@@ -11,42 +11,53 @@
  */
 class Solution {
 public:
-   TreeNode* findLastRight(TreeNode *root){
-    if (root->right == NULL) return root;
-    return findLastRight(root->right);
-}
-
-TreeNode* helper(TreeNode *root){
-    if (root->left == NULL) return root->right;
-    if (root->right == NULL) return root->left;
     
-    TreeNode *rightChild = root->right;
-    TreeNode *lastRight = findLastRight(root->left);
-    lastRight->right = rightChild;
-    return root->left;
-}
-
-TreeNode* deleteNode(TreeNode* root, int key) {
-    if (root == NULL) return NULL;
-    if (root->val == key) return helper(root);
-    
-    TreeNode *dummy = root;
-    while (root != NULL){
-        if (key < root->val){
-            if (root->left != NULL and root->left->val == key){
-                root->left = helper(root->left);
-                break;
-            }
-            else root = root->left;
-        }
-        else {
-            if (root->right != NULL and root->right->val == key){
-                root->right = helper(root->right);
-                break;
-            }
-            else root = root->right;
-        }
+    TreeNode * findRightMost(TreeNode *node)
+    {
+        if(node->right==NULL) return node;
+        return findRightMost(node->right);
     }
-    return dummy;
-}
+    
+    TreeNode * helper(TreeNode *node)
+    {
+        if(node->left==NULL) return node->right;
+        if(node->right==NULL) return node->left;
+        
+        TreeNode *n1=node->right;
+        TreeNode *n2=findRightMost(node->left);
+        n2->right=n1;
+        //n2->left=node->left;
+        return node->left;
+    }
+    
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        if(root==NULL) return root;
+        if(root->val == key) return helper(root);
+        
+        TreeNode *node=root;
+        while(node)
+        {
+            if(node->val > key)
+            {
+                if(node->left && node->left->val == key)
+                {
+                    node->left=helper(node->left);
+                    break;
+                }
+                else node=node->left;
+            }
+            else
+            {
+                if(node->right && node->right->val == key)
+                {
+                    node->right=helper(node->right);
+                    break;
+                }
+                else node=node->right;
+            }
+        }
+        
+        return root;
+        
+    }
 };
