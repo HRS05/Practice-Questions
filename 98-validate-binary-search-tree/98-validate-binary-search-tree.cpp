@@ -12,9 +12,18 @@
 class Solution {
 public:
     
+    bool helper(TreeNode *root,long mmin,long mmax)
+    {
+        if(root==NULL) return true;
+        if(root->val >=mmax || root->val <=mmin) return false;
+        return helper(root->left,mmin,root->val) && helper(root->right,root->val,mmax);
+    }
     
+    bool isValidBST(TreeNode* root) {
+        return helper(root,LONG_MIN,LONG_MAX);
+    }
     
-    
+    /*
     bool helper(TreeNode *root,TreeNode *&prev)
     {
         if(root==NULL) return true;
@@ -28,4 +37,5 @@ public:
         TreeNode *prev=NULL;
         return helper(root,prev);
     }
+    */
 };
