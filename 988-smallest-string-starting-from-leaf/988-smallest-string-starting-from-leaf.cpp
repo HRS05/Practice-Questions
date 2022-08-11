@@ -11,30 +11,30 @@
  */
 class Solution {
 public:
-    void helper(TreeNode *root,string s,vector<string> &strings)
+    void helper(TreeNode *root,string s,string &ans)
     {
         if(root==NULL) return ;
          if(root->left==NULL && root->right==NULL){
              s=char(root->val+97)+s;
              
-             strings.push_back(s);
+             if(ans=="") ans=s;
+             else if(ans > s) ans=s;
              
             return;
         }
              s=char(root->val+97)+s;
-        helper(root->left,s,strings);
+        helper(root->left,s,ans);
        
-        helper(root->right,s,strings);
+        helper(root->right,s,ans);
         
         
     }
     
     
     string smallestFromLeaf(TreeNode* root) {
-        vector<string> strings;
         string s;
-        helper(root,s,strings);
-        sort(strings.begin(),strings.end());
-        return strings[0];
+        string ans="";
+        helper(root,s,ans);
+        return ans;
     } 
 };
