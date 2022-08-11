@@ -15,13 +15,13 @@ public:
     {
         if(root==NULL) return ;
          if(root->left==NULL && root->right==NULL){
-             s+=root->val+97;
-             reverse(s.begin(),s.end());
+             s=char(root->val+97)+s;
+             
              strings.push_back(s);
              
             return;
         }
-        s+=root->val+97;
+             s=char(root->val+97)+s;
         helper(root->left,s,strings);
        
         helper(root->right,s,strings);
