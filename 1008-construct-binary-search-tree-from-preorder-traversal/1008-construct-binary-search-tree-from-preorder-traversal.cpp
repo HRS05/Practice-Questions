@@ -12,6 +12,22 @@
 class Solution {
 public:
     
+    TreeNode * helper(vector<int> &preorder,int &i,int bound)
+    {
+        if(i >= preorder.size() || preorder[i] > bound) return NULL;
+        TreeNode *node=new TreeNode(preorder[i++]);
+        node->left=helper(preorder,i,node->val);
+        node->right=helper(preorder,i,bound);
+        return node;
+    }
+    
+    TreeNode * bstFromPreorder(vector<int> &preorder)
+    {
+        int i=0;
+        return helper(preorder,i,INT_MAX);
+    }
+    
+    /*
     TreeNode *construct(vector<int> &preorder,int i,int f)
     {
         if(i > f) return NULL;
@@ -27,7 +43,7 @@ public:
     
     TreeNode* bstFromPreorder(vector<int>& preorder) {
         return construct(preorder,0,preorder.size()-1);
-    }
+    }*/
     
 //     TreeNode* construct(vector<int> &inorder,int inStart,int inEnd,vector<int> &preorder,int preStart,int preEnd,map<int,int> &mp)
 //     {
