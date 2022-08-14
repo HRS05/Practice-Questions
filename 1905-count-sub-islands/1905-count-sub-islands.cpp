@@ -36,7 +36,6 @@ public:
                 {
                     if(checkForSubIsland(grid1,grid2,i,j)){
                         //cout<<i<<"  "<<j<<endl;
-                       
                         ans++;
                     }
                 }
