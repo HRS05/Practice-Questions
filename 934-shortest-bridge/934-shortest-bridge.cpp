@@ -12,7 +12,7 @@ public:
     void dfs(int i,int j,vector<vector<int> > &grid,vector<vector<bool> > &vis,queue<pair<int,int> > &q)
     {
          vis[i][j] = 1;
-        q.push({i,j});     // pushing all points of island 1 so that we can measure the distance from all                               //the points
+        q.push({i,j});     
         for(int k=0;k<4;k++)
         {
             int r = i+dxy[k][0];
