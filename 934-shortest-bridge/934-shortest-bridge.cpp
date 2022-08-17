@@ -22,17 +22,6 @@ public:
                 dfs(r,c,grid,vis,q);
             }
         }
-        
-        // vis[i][j]=true;
-        // q.push({i,j});
-        // for(int i=0;i<4;i++)
-        // {
-        //     int x=i+dxy[i][0];
-        //     int y=j+dxy[i][1];
-        //     if(isValid(x,y,vis) && grid[x][y]){
-        //         dfs(x,y,grid,vis,q);
-        //     }
-        // }
     }
     
     int bfs(vector<vector<int> > &grid,vector<vector<bool> > &vis,queue<pair<int,int> > &q)
