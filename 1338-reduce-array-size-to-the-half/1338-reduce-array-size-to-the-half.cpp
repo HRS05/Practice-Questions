@@ -12,7 +12,7 @@ public:
             if(i+1<n && arr[i+1]!=arr[i]) {
                 q.push({cnt,arr[i]});
                 cnt=0;
-            }if(i+1==n) {
+            }else if(i+1==n) {
                 q.push({cnt,arr[i]});
             }
         }
