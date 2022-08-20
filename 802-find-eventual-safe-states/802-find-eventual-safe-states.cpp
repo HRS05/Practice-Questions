@@ -7,7 +7,7 @@ public:
         color[src]=1;
         for(int nbr : graph[src])
         {
-            if(color[src]==2) continue;
+            //if(color[src]==2) continue;
             if(color[nbr]==1 || !dfs(nbr,color,graph)) return false;
             
         }
