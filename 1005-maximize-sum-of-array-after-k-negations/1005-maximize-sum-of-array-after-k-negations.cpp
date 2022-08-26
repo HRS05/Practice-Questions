@@ -11,7 +11,6 @@ public:
             }
             sum+=nums[i];
         }
-        cout<<k<<endl;
         if(k==0 || k%2==0) return sum;
         sort(nums.begin(),nums.end());
        
