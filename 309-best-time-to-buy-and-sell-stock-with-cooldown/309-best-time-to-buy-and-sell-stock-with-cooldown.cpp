@@ -1,5 +1,41 @@
 class Solution {
 public:
+    //tabulation ? space optimization
+    int maxProfit(vector<int>& prices) {
+        //buy=1 //sell=2 //cooldown=3
+        int n=prices.size();
+        vector<int>  after(4,0);
+        vector<int>  curr(4,0);
+        
+        for(int index=n-1;index>=0;index--)
+        {
+            for(int action=1;action<=3;action++)
+            {
+                if(action==1)
+                {
+                    curr[action]=max((-prices[index]+after[2]),after[1]);
+                    //ans=max((-prices[index]+helper(prices,2,index+1,dp)),helper(prices,1,index+1,dp));
+                }
+                else if(action==2)
+                {
+                    curr[action]=max((prices[index]+after[3]),after[2]);
+                    //ans=max((prices[index]+helper(prices,3,index+1,dp)),helper(prices,2,index+1,dp));
+                }
+                else if(action==3)
+                {
+                    curr[action]=after[1];
+                    //ans=helper(prices,1,index+1,dp);
+                }
+            }
+            after=curr;
+        }
+        
+        return after[1];
+    }
+    
+    
+    /*
+    //tabulation code
     int maxProfit(vector<int>& prices) {
         //buy=1 //sell=2 //cooldown=3
         int n=prices.size();
@@ -29,6 +65,7 @@ public:
         
         return dp[0][1];
     }
+    */
     
     
     /*
