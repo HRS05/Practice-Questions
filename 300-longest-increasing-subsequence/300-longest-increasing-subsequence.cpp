@@ -1,22 +1,22 @@
 class Solution {
 public:
-    int lengthOfLIS(vector<int>& nums) 
-    {
-        int n=nums.size();
-        vector<int> dp(n,1);
-        int maxi=1;
-        for(int i=0;i<n;i++)
-        {
-            for(int j=i-1;j>=0;j--)
-            {
-                if(nums[i] > nums[j]) dp[i]=max(dp[i],dp[j]+1);
-            }
-            maxi=max(dp[i],maxi);
-        }
-        return maxi;
-    }
+    // int lengthOfLIS(vector<int>& nums) 
+    // {
+    //     int n=nums.size();
+    //     vector<int> dp(n,1);
+    //     int maxi=1;
+    //     for(int i=0;i<n;i++)
+    //     {
+    //         for(int j=i-1;j>=0;j--)
+    //         {
+    //             if(nums[i] > nums[j]) dp[i]=max(dp[i],dp[j]+1);
+    //         }
+    //         maxi=max(dp[i],maxi);
+    //     }
+    //     return maxi;
+    // }
     
-    /*
+    
     int lengthOfLIS(vector<int>& nums) {
         const int n = nums.size();
         vector<int> tail;
@@ -29,16 +29,18 @@ public:
                 tail[firstGreatEqual(tail, num)] = num;
             }
         }
-        
+        for(int i=0;i<tail.size();i++) cout<<tail[i]<<" ";
         return tail.size();
     }
 private:
     int firstGreatEqual(vector<int>& t, int tr){
 		// For finding the index of target element.
 		// Lower_Bound solves via Binary Search.
+       
+        // the next smallest number just greater than or equal to that number tr in t.
         return lower_bound(t.begin(), t.end(), tr) - t.begin();
     }
-    */
+    
     
     
     /*
