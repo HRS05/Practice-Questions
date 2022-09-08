@@ -29,7 +29,7 @@ public:
                 tail[firstGreatEqual(tail, num)] = num;
             }
         }
-        for(int i=0;i<tail.size();i++) cout<<tail[i]<<" ";
+        //for(int i=0;i<tail.size();i++) cout<<tail[i]<<" ";
         return tail.size();
     }
 private:
