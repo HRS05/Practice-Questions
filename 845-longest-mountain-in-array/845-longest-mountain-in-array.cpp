@@ -29,7 +29,7 @@ public:
                     ans = max(ans, end - base + 1);
                 }
             }
-
+            //below we are marking the stating point of out next mountain
             base = max(end, base + 1);
         }
 
@@ -37,6 +37,7 @@ public:
     }
     
     /*
+    //TLE solution TC : O(n^2)
     int longestMountain(vector<int>& arr) 
     {
         int n=arr.size();
