@@ -31,6 +31,9 @@ public:
         int maxi=0;
         for(int i=n-1;i>=0;i--)
         {
+            //in this specific question we are only considering the increasing as well as
+            //also decreasing part of bitonic sequence (because of array mountain)
+            //this below condition will avoid the only increasing and only decreasing cases
             if(dp1[i] > 1 && dp2[i] > 1)
             maxi=max(maxi,dp1[i]+dp2[i]-1);
         }
