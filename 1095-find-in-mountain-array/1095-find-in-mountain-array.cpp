@@ -18,8 +18,9 @@ public:
         n=h=mountainArr.length()-1;
         int peak;
         int ans=INT_MAX;
-               // return 0;
+             
 
+        //finding peak of mountain
         while(l<h)
         {
             int mid=(l+h)/2;
@@ -31,6 +32,7 @@ public:
         cout<<"peak "<<peak<<endl;
         if(mountainArr.get(peak) == target) return peak;
         
+        //finding target in left part of peak
         l=0;
         h=peak;
         while(l<=h)
@@ -46,9 +48,11 @@ public:
         }
         if(ans!=INT_MAX) return ans;
         
-        l=peak+1;
-        h=n;
         
+        //if we did not find out peak in left part so now
+        //finding target in right part of peak
+        l=peak+1;
+        h=n;        
         while(l<=h)
         {
             int mid=(l+h)/2;
