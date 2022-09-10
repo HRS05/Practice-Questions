@@ -16,12 +16,11 @@ public:
                      if(buy)
                     {
                         curr[buy][cap]=max((-prices[index]+after[0][cap]),after[1][cap]);
-                        //dp[index][buy][cap]=max((-prices[index]+helper(prices,index+1,0,cap,dp)),helper(prices,index+1,1,cap,dp));
+                        
                     }
                     else
                     {
                         curr[buy][cap]=max((prices[index]+after[1][cap-1]),after[0][cap]);
-                        //dp[index][buy][cap]=max((prices[index]+helper(prices,index+1,1,cap-1,dp)),helper(prices,index+1,0,cap,dp));
                     }
                     
                 }
