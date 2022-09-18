@@ -21,7 +21,7 @@ public:
         {
             int size=q.size();
             if(level%2==0) v.clear();
-            else reverse(v.begin(),v.end());
+            //else reverse(v.begin(),v.end());
             for(int i=0;i<size;i++)
             {
                 TreeNode *node = q.front(); q.pop();
@@ -32,7 +32,7 @@ public:
                     }
                 }else
                 {
-                    node->val=v[i];
+                    node->val=v[size-1-i];
                 }
                 if(node->left) q.push(node->left);
                 if(node->right) q.push(node->right);
