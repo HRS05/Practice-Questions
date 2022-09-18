@@ -16,11 +16,11 @@ public:
         queue<TreeNode *> q;
         q.push(root);
         int level=0;
-        vector<int> v;
+        vector<int> v,x;
         while(!q.empty())
         {
             int size=q.size();
-            if(level%2==0) v.clear();
+            if(level%2==0) v=x;
             //else reverse(v.begin(),v.end());
             for(int i=0;i<size;i++)
             {
