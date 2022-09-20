@@ -1,5 +1,5 @@
 class Solution {
-public:
+public:/*
     int leastInterval(vector<char>& tasks, int t) {
         
         unordered_map <char,int> mp;
@@ -16,9 +16,9 @@ public:
         int sz = tasks.size();
         int ans = max(n, sz);
         return ans;
-    }
+    }*/
     
-    /*
+    
     //importtant solution
     int leastInterval(vector<char>& tasks, int n) {
         priority_queue<int> pq;
@@ -59,5 +59,5 @@ public:
             
         return time;
     }
-    */
+    
 };
