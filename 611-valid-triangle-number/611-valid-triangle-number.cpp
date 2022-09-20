@@ -17,8 +17,6 @@ public:
                 j++;
             }
         }
-        
-        
         return ans;
     }
 };
