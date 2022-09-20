@@ -5,7 +5,7 @@ public:
         queue<pair<int,int> > q;
         int time=0;
         int count=0;
-        map<char,int> mp;
+        unordered_map<char,int> mp;
         for(char c : tasks)
         {
             mp[c]++;
