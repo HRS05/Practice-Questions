@@ -1,5 +1,25 @@
 class Solution {
 public:
+    int leastInterval(vector<char>& tasks, int t) {
+        
+        unordered_map <char,int> mp;
+        int mx=0; int mxcnt=0;
+        for(int i=0;i<tasks.size();i++)
+        {
+            mp[tasks[i]]++;
+            if(mp[tasks[i]]==mx) mxcnt++;
+            else if(mp[tasks[i]]>mx) mx = max(mx, mp[tasks[i]]), mxcnt=1;
+        }
+        
+        int n = (mx-1)*(t+1) + 1;
+        n+=mxcnt-1;
+        int sz = tasks.size();
+        int ans = max(n, sz);
+        return ans;
+    }
+    
+    /*
+    //importtant solution
     int leastInterval(vector<char>& tasks, int n) {
         priority_queue<int> pq;
         queue<pair<int,int> > q;
@@ -39,4 +59,5 @@ public:
             
         return time;
     }
+    */
 };
