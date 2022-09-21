@@ -8,36 +8,36 @@ public:
             if(num%2 == 0) sum+=num;
         } 
         vector<int> ans;
+        int x;
         for(vector<int> v : queries)
         {
             if(nums[v[1]] % 2 == 0)
             {
-                int x=nums[v[1]];
+                x=nums[v[1]];
                 x=nums[v[1]] + v[0];
                 if(x % 2 ==0){
                     sum-=nums[v[1]];
-                    nums[v[1]]=x;
-                    sum+=nums[v[1]];
+                    
+                    sum+=x;
                 }
                 else{
                     sum-=nums[v[1]];
-                    nums[v[1]]=x;
                 }
             }
             else
             {
-                int x=nums[v[1]];
+                x=nums[v[1]];
                 x=nums[v[1]] + v[0];
                 if(x % 2 ==0){
                     //sum-=nums[v[1]];
-                    nums[v[1]]=x;
-                    sum+=nums[v[1]];
+                    sum+=x;
                 }
-                else{
-                    //sum-=nums[v[1]];
-                    nums[v[1]]=x;
-                }
+                // else{
+                //     //sum-=nums[v[1]];
+                //     nums[v[1]]=x;
+                // }
             }
+            nums[v[1]]=x;
             ans.push_back(sum);
         }
         return ans;
