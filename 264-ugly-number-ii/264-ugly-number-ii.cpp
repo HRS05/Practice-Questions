@@ -5,7 +5,8 @@ public:
     int nthUglyNumber(int n) {
         int x2,x3,x5;
         x2=x3=x5=0;
-        vector<int> dp(n+1,1);
+        vector<int> dp(n+1);
+        dp[0]=1;
         for(int i=1;i<=n;i++)
         {
             dp[i]=min({2*dp[x2],3*dp[x3],5*dp[x5]});
