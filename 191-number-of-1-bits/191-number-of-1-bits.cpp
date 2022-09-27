@@ -4,8 +4,10 @@ public:
         int ans=0;
         while(n > 0)
         {
-            n=n & (n-1);
-            ans++;
+            //n=n & (n-1);
+            int x=(n&1);
+            if(x)ans++;
+            n>>=1;
         }
         return ans;
     }
