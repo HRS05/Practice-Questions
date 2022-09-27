@@ -22,6 +22,7 @@ public:
                     right=-1;
                     while(a<b)
                     {
+                        // if we undo comment below code so, it will works
                         // if(dominoes[a]!='.')
                         // {
                         //     while(b>a){
