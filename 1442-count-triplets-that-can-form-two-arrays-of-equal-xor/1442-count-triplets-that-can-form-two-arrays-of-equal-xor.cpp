@@ -1,5 +1,10 @@
 class Solution {
 public:
+    
+    
+    //intution
+    //if xor from i to k is 0 ,so we can put j any where in between them !!!!
+    
     int countTriplets(vector<int>& arr) {
         
         int count=0;
