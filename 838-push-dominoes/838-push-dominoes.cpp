@@ -5,15 +5,10 @@ public:
         int left=0;
         while(left < dominoes.size())
         {
-
             if(dominoes[left] == 'L')
             {
-                                                                                               // cout<<right<<endl;
-
                 if(right==-1 )
                 {
-                    cout<<left<<endl;
-                    //for(int i=right+1;i<left;i++)
                     for(int i=left-1;i>right;i--)
                     {
                         if(dominoes[i]!='.') break;
@@ -22,8 +17,6 @@ public:
                 }
                 else
                 {
-                                                                    cout<<left<<endl;
-
                     int a=right+1;
                     int b=left-1;
                     right=-1;
@@ -47,10 +40,9 @@ public:
                             }
                             break;
                         }
-                        dominoes[a]='R'; right=a;
+                        dominoes[a]='R'; 
                         dominoes[b]='L'; 
                         b--; a++;
-                        right=-1;
                     }
                 }
             }
