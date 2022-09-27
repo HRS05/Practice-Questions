@@ -22,24 +22,24 @@ public:
                     right=-1;
                     while(a<b)
                     {
-                        if(dominoes[a]!='.')
-                        {
-                            while(b>a){
-                                if(dominoes[b]!='.') break;
-                                dominoes[b]='L';
-                                b--;
-                            }
-                            break;
-                        }
-                        if(dominoes[b]!='.')
-                        {
-                            while(b>a){
-                                if(dominoes[a]!='.') break;
-                                dominoes[a]='R';
-                                a++;
-                            }
-                            break;
-                        }
+                        // if(dominoes[a]!='.')
+                        // {
+                        //     while(b>a){
+                        //         if(dominoes[b]!='.') break;
+                        //         dominoes[b]='L';
+                        //         b--;
+                        //     }
+                        //     break;
+                        // }
+                        // if(dominoes[b]!='.')
+                        // {
+                        //     while(b>a){
+                        //         if(dominoes[a]!='.') break;
+                        //         dominoes[a]='R';
+                        //         a++;
+                        //     }
+                        //     break;
+                        // }
                         dominoes[a]='R'; 
                         dominoes[b]='L'; 
                         b--; a++;
