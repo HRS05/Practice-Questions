@@ -1,5 +1,41 @@
 class Solution {
 public:
+    //on and on solution
+     string pushDominoes(string dominoes){
+        int n = dominoes.size();
+        vector<int> x(n, 0);
+        int f = 0;
+        for(int i = 0; i < n; i++){
+            if(dominoes[i] == 'R') f = n;
+            if(dominoes[i] == 'L') f = 0;
+            x[i] = f;
+            if(f > 0) f--;
+        }
+        f = 0;
+        for(int i = n-1; i >= 0; i--){
+            if(dominoes[i] == 'L') f = n;
+            if(dominoes[i] == 'R') f = 0;
+            x[i] -= f;
+            if(f > 0) f--;
+        }
+        string ans;
+        for(int &i: x){
+            if(i == 0){
+                ans += '.';
+            }
+            else if(i < 0){
+                ans += 'L';
+            }
+            else{
+                ans += 'R';
+            }
+        }
+        return ans;
+    }
+    
+    
+    /*
+    //on solution
     string pushDominoes(string dominoes) {
         int right=-1;
         int left=0;
@@ -63,4 +99,5 @@ public:
         }
         return dominoes;
     }
+    */
 };
