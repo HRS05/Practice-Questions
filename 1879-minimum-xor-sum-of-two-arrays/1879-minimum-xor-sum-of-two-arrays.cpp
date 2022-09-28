@@ -1,5 +1,8 @@
 class Solution {
 public:
+    
+    //TC and SC is O(n * 2^n)
+    
     int solve(int i,int j,vector<vector<int> > &dp,vector<int> &nums1,vector<int> &nums2)
     {
         int n=nums1.size();
@@ -7,6 +10,8 @@ public:
         if(dp[i][j]!=-1) return dp[i][j];
         int ans=INT_MAX;
         
+        
+        // trying to find xor of element nums1[i] with any left out element in nums2 
         for(int k=0;k<n;k++)
         {
             if((j & (1<<k)) == 0)
