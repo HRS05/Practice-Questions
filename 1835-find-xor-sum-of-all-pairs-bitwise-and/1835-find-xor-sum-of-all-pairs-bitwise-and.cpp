@@ -7,10 +7,19 @@ So, we calculate XOR sum of the first array xa. Then, the final result is (xa & 
     */
     
     int getXORSum(vector<int>& arr1, vector<int>& arr2) {
-        int xxor=0;
-        int ans=0;
-        for(int num : arr1) xxor^=num;
-        for(int num : arr2) ans^=(xxor & num);
-        return ans;
+        // int xxor=0;
+        // int ans=0;
+        // for(int num : arr1) xxor^=num;
+        // for(int num : arr2) ans^=(xxor & num);
+        // return ans;
+        
+        //or
+        
+        int xxor1=0;
+        int xxor2=0;
+        for(int num : arr1) xxor1^=num;
+        for(int num : arr2) xxor2^=num;
+        return xxor1 & xxor2;
+        
     }
 };
